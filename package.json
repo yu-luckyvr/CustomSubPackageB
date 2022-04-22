@@ -1,0 +1,13 @@
+{
+  "name": "com.luckyvr.custom_subpackage_b",
+  "displayName": "CustomSubPackageB",
+  "version": "0.0.5",
+  "unity": "2020.3",
+  "author": {
+    "name": "YuGao",
+    "email": "yu@getluckyvr.com",
+    "url": "https://www.unity3d.com"
+  },
+  "description": "test a sub dependency for SubA",
+  "type": "tool"
+}
