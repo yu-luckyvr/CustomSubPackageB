@@ -9,5 +9,9 @@
     "url": "https://www.unity3d.com"
   },
   "description": "test a sub dependency for SubA",
-  "type": "tool"
+  "type": "tool",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yu-luckyvr/CustomSubPackageB.git"
+  }
 }
