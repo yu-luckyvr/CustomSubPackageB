@@ -1,10 +1,10 @@
 {
-    "name": "LuckyPackageInstaller.Editor",
+    "name": "LuckyOS.Editor",
     "rootNamespace": "",
-    "references": [
-        "UnityEditor.UI"
+    "references": [],
+    "includePlatforms": [
+        "Editor"
     ],
-    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
