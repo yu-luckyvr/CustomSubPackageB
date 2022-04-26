@@ -1,12 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "LuckyOS/PackageInstaller", fileName = "PackageInstaller")]
-public class LuckyPackageInstaller : ScriptableObject
+namespace LuckyOS.Editor
 {
-    public string originalPath;
-
-    public void InstallLuckyPackage(string destinationPath)
+    [CreateAssetMenu(menuName = "LuckyOS/PackageInstaller", fileName = "PackageInstaller")]
+    public class LuckyPackageInstaller : ScriptableObject
     {
-        Debug.Log($"Try install from category from {originalPath} to {destinationPath}");
+        public string originalPath;
+
+        public void InstallLuckyPackage(string destinationPath)
+        {
+            Debug.Log($"Try install from category from {originalPath} to {destinationPath}");
+        }
     }
 }

@@ -1,26 +1,29 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(LuckyPackageInstaller))]
-public class LuckyPackageInstallerEditor : Editor
+namespace LuckyOS.Editor
 {
-    private LuckyPackageInstaller comp;
-    private void OnEnable()
-    {
-        comp = (LuckyPackageInstaller) target;
-    }
 
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(LuckyPackageInstaller))]
+    public class LuckyPackageInstallerEditor : UnityEditor.Editor
     {
-        comp.originalPath = EditorGUILayout.TextField("AssetBundle Path", comp.originalPath);
-        string currentPath = AssetDatabase.GetAssetPath(comp);
-        EditorGUILayout.TextField("Current Path",currentPath);
-        
-        if(GUILayout.Button("Install Package"))
+        private LuckyPackageInstaller comp;
+
+        private void OnEnable()
         {
-            comp.InstallLuckyPackage(currentPath);
+            comp = (LuckyPackageInstaller) target;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            comp.originalPath = EditorGUILayout.TextField("AssetBundle Path", comp.originalPath);
+            string currentPath = AssetDatabase.GetAssetPath(comp);
+            EditorGUILayout.TextField("Current Path", currentPath);
+
+            if (GUILayout.Button("Install Package"))
+            {
+                comp.InstallLuckyPackage(currentPath);
+            }
         }
     }
-    
-    
 }
