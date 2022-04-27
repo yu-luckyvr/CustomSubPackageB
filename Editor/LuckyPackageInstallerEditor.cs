@@ -32,6 +32,11 @@ namespace LuckyOS.Editor
             currentPath = currentPath.Remove(start_index);
             currentPath += comp.bundlePath +"/"+ comp.bundleCatalog;
             EditorGUILayout.LabelField("Bundle Path", currentPath);
+
+            if (GUI.changed)
+            {
+                EditorUtility.SetDirty(target);
+            }
         }
 
         [MenuItem("LuckyOS/PackageInstaller/Copy Bundle Path")]
