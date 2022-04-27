@@ -25,11 +25,12 @@ namespace LuckyOS.Editor
         public override void OnInspectorGUI()
         {
             comp.bundlePath = EditorGUILayout.TextField("AssetBundle Path", comp.bundlePath);
+            comp.bundleCatalog = EditorGUILayout.TextField("Catalog Name", comp.bundleCatalog);
             
             currentPath = AssetDatabase.GetAssetPath(comp);
             int start_index = currentPath.Length - comp.name.Length - 6;
             currentPath = currentPath.Remove(start_index);
-            currentPath += comp.bundlePath;
+            currentPath += comp.bundlePath +"/"+ comp.bundleCatalog;
             EditorGUILayout.LabelField("Bundle Path", currentPath);
         }
 

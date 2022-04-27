@@ -6,5 +6,6 @@ namespace LuckyOS.Editor
     public class LuckyPackageInstaller : ScriptableObject
     {
         public string bundlePath = "AssetBundles~";
+        public string bundleCatalog;
     }
 }
