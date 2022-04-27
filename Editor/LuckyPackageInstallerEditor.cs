@@ -7,27 +7,47 @@ namespace LuckyOS.Editor
     [CustomEditor(typeof(LuckyPackageInstaller))]
     public class LuckyPackageInstallerEditor : UnityEditor.Editor
     {
-        private LuckyPackageInstaller comp;
+        private static LuckyPackageInstaller comp;
+        private static string currentPath = null;
 
         private void OnEnable()
         {
             comp = (LuckyPackageInstaller) target;
         }
+        
+        private void OnDisable()
+        {
+            comp = null;
+            currentPath = null;
+        }
+        
 
         public override void OnInspectorGUI()
         {
             comp.bundlePath = EditorGUILayout.TextField("AssetBundle Path", comp.bundlePath);
             
-            string currentPath = AssetDatabase.GetAssetPath(comp);
+            currentPath = AssetDatabase.GetAssetPath(comp);
             int start_index = currentPath.Length - comp.name.Length - 6;
             currentPath = currentPath.Remove(start_index);
             currentPath += comp.bundlePath;
-            EditorGUILayout.LabelField("Current Path", currentPath);
+            EditorGUILayout.LabelField("Bundle Path", currentPath);
+        }
 
-            if (GUILayout.Button("Copy to Clipboard"))
+        [MenuItem("LuckyOS/PackageInstaller/Copy Bundle Path")]
+        public static void CopyPathMenu()
+        {
+            if (comp == null)
             {
+                Debug.LogWarning("PackageInstall asset is not focused by inspector. Please first select a PackageInstall asset.");
+            }
+            else
+            {
+                Debug.LogWarning($"Copied to ClipBoard: BundlePath: {currentPath }");
                 GUIUtility.systemCopyBuffer = currentPath;
             }
+
         }
     }
+    
+    
 }
