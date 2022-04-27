@@ -16,13 +16,17 @@ namespace LuckyOS.Editor
 
         public override void OnInspectorGUI()
         {
-            comp.originalPath = EditorGUILayout.TextField("AssetBundle Path", comp.originalPath);
+            comp.bundlePath = EditorGUILayout.TextField("AssetBundle Path", comp.bundlePath);
+            
             string currentPath = AssetDatabase.GetAssetPath(comp);
-            EditorGUILayout.TextField("Current Path", currentPath);
+            int start_index = currentPath.Length - comp.name.Length - 6;
+            currentPath = currentPath.Remove(start_index);
+            currentPath += comp.bundlePath;
+            EditorGUILayout.LabelField("Current Path", currentPath);
 
-            if (GUILayout.Button("Install Package"))
+            if (GUILayout.Button("Copy to Clipboard"))
             {
-                comp.InstallLuckyPackage(currentPath);
+                GUIUtility.systemCopyBuffer = currentPath;
             }
         }
     }
